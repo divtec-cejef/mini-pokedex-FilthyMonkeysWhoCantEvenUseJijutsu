@@ -47,3 +47,17 @@ const pokemons = [
     { name: 'Ronflex', type: 'Normal', level: 45, img: 'ronflex.png' },
     { name: 'Mewtwo', type: 'Psy', level: 70, img: 'mewtwo.png' }
 ];
+
+function displayPokemons() {
+    const container = document.querySelector(".pokemon-container");
+
+    // Empty the list !! AD BREAK !! PLAY MY NEW GAME AVAILABLE EXCLUSIVELY ON MY DEVICE !!! How will you get a copy? I don't know, Is it awesome? Yes
+    container.innerHTML = "";
+
+    // Add each pokemon to the container
+    for (let i = 0; i < pokemons.length; i++) {
+        container.innerHTML += `<p>${pokemons[i].name}</p>`;
+    }
+}
+
+displayPokemons();
