@@ -50,13 +50,25 @@ const pokemons = [
 
 function displayPokemons() {
     const container = document.querySelector(".pokemon-container");
-
     // Empty the list !! AD BREAK !! PLAY MY NEW GAME AVAILABLE EXCLUSIVELY ON MY DEVICE !!! How will you get a copy? I don't know, Is it awesome? Yes
     container.innerHTML = "";
 
-    // Add each pokemon to the container
     for (let i = 0; i < pokemons.length; i++) {
-        container.innerHTML += `<p>${pokemons[i].name}</p>`;
+        const pokemon = pokemons[i];
+
+        // Separate the types
+        const types = pokemon.type.split(",").map(t => t.trim());
+
+        // Throw in the types
+        let typeHTML = "";
+        for (let j = 0; j < types.length; j++) {
+            typeHTML += `<small>${types[j]}</small> `;
+        }
+
+        // Add the brokemon with the names and type(s)
+        container.innerHTML += `
+            <p>${pokemon.name} ${typeHTML}</p>
+        `;
     }
 }
 
