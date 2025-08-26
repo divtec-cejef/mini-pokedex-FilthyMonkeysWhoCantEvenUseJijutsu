@@ -50,26 +50,28 @@ const pokemons = [
 
 function displayPokemons() {
     const container = document.querySelector(".pokemon-container");
-    // Empty the list !! AD BREAK !! PLAY MY NEW GAME AVAILABLE EXCLUSIVELY ON MY DEVICE !!! How will you get a copy? I don't know, Is it awesome? Yes
     container.innerHTML = "";
 
     for (let i = 0; i < pokemons.length; i++) {
-        const pokemon = pokemons[i];
-
-        // Separate the types
-        const types = pokemon.type.split(",").map(t => t.trim());
-
-        // Throw in the types
-        let typeHTML = "";
-        for (let j = 0; j < types.length; j++) {
-            typeHTML += `<small>${types[j]}</small> `;
-        }
-
-        // Add the brokemon with the names and type(s)
-        container.innerHTML += `
-            <p>${pokemon.name} ${typeHTML}</p>
-        `;
+        container.innerHTML += generatePokemonCardHTML(pokemons[i]);
     }
 }
+
+
+function generatePokemonCardHTML(pokemon) {
+    // Transform the type chain into a list thing, then to string with join()
+    const types = pokemon.type.split(",").map(t => t.trim()).join(", ");
+
+    // Return the HTML code !! AD BREAK !! PLAY MY NEW GAME AVAILABLE EXCLUSIVELY ON MY DEVICE !!! How will you get a copy? I don't know, Is it awesome? Yes
+    return `
+        <div class="pokemon-card">
+            <img src="images/${pokemon.img}" alt="${pokemon.name}">
+            <h3>${pokemon.name}</h3>
+            <p>Type : ${types}</p>
+            <p>Niveau : ${pokemon.level}</p>
+        </div>
+    `;
+}
+
 
 displayPokemons();
